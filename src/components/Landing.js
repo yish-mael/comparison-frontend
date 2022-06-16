@@ -52,7 +52,11 @@ function Landing()
             const data = await response.json();
 
                 if(data.message){
-                    setResults(data.message); 
+                    let msg = data.message;
+                    if(msg === "city does not exsist") {
+                        msg = "Sorry, we are yet to have the data.";
+                    }
+                    setResults(msg); 
                     setAverageYearlySavings("");
                     setCheaperCity("");
                     setAverageMonthlySavings("");   
@@ -107,12 +111,12 @@ function Landing()
 
                                 <div className="col-sm text-start">
                                     <label htmlFor="beds"><b>Beds:</b></label>
-                                    <input required type="number" className="form-control" name="beds" placeholder="Total Beds" aria-label="Beds"/>
+                                    <input required type="number" className="form-control" name="beds" min="0" placeholder="Total Beds" aria-label="Beds"/>
                                 </div>
 
                                 <div className="col-sm text-start">
                                     <label htmlFor="baths"><b>Baths:</b></label>
-                                    <input required type="number" className="form-control" name="baths" placeholder="Total Baths" aria-label="Baths" step="0.5"/>
+                                    <input required type="number" className="form-control" name="baths" min="0" placeholder="Total Baths" aria-label="Baths" step="0.5"/>
                                 </div>
 
                                 <div className="col-sm mt-auto">
