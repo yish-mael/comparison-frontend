@@ -1,20 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Landing()
 {
 
     let [averageMonthlySavings, setAverageMonthlySavings] = useState(); 
     let [averageYearlySavings, setAverageYearlySavings] = useState();
-    // let [baths, setBaths] = useState();
-    // let [beds, setBeds] = useState();
     let [cheaperCity, setCheaperCity] = useState();
-    // let [cityOne, setCityOne] = useState();
-    // let [cityOneAverageMonthlyPrice, setCityOneAverageMonthlyPrice] = useState();
-    // let [cityOneAverageYearlyPrice, setCityOneAverageYearlyPrice] = useState();
-    // let [cityTwo, setCityTwo] = useState(); 
-    // let [cityTwoAverageMonthlyPrice, setCityTwoAverageMonthlyPrice] = useState();
-    // let [cityTwoAverageYearlyPrice, setCityTwoAverageYearlyPrice] = useState();
     let [results, setResults] = useState("No Results available");
+    let [cities, setCities] = useState([]);
+
+    async function getCities()
+    {
+        try{
+
+            const cityResponse = await fetch('https://comparison-appx.herokuapp.com/cities');
+            const cityData = await cityResponse.json();
+            // console.log(cityData);
+            setCities(cityData);
+        }catch(err){
+            console.log(err);
+        }
+    }
 
     async function compareCities(event)
     {
@@ -25,6 +31,11 @@ function Landing()
         let beds = event.target[2].value;
         let baths = event.target[3].value;
 
+        if(baths.indexOf('.') === -1){
+            baths += ".0";
+        }
+        //console.log(baths.indexOf('.'));
+
         try{
             const response = await fetch('https://comparison-appx.herokuapp.com/search', {
                 method: 'POST',
@@ -34,14 +45,17 @@ function Landing()
                 body: JSON.stringify({
                     cityOne: cityOne,
                     cityTwo: cityTwo,
-                    bath: baths,
-                    bed: beds
+                    baths: baths,
+                    beds: beds
                 })
             });
             const data = await response.json();
 
                 if(data.message){
-                    setResults(data.message);    
+                    setResults(data.message); 
+                    setAverageYearlySavings("");
+                    setCheaperCity("");
+                    setAverageMonthlySavings("");   
                 }else{
                     setResults("All results"); 
                     setAverageYearlySavings("Average yearly savings: $"+data.AverageYearlySavings)
@@ -49,13 +63,15 @@ function Landing()
                     setAverageMonthlySavings("Average monthly savings: $"+data.AverageMonthlySavings)
                 }
 
-            //setResults(data);
-
-            console.log(data);
+            //console.log(data);
         }catch(err){
             console.error(err);
         }
     }
+
+    useEffect(() => {
+        getCities();
+    }, []);
 
     return(
         <div className="container pt-5 text-center">
@@ -73,24 +89,34 @@ function Landing()
 
                             <div className="row g-3">
 
-                                <div className="col-sm-3">
-                                    <input required type="text" className="form-control" name="cityOne" placeholder="City One" aria-label="City From"/>
+                                <div className="col-sm text-start">
+                                    <label htmlFor="cityOne"><b>City One:</b></label>
+                                    <select required className="form-control" name="cityOne">
+                                        <option value="">select</option>
+                                       { cities.map((city, index)=>  (<option value={city} key={index}>{city.charAt(0).toUpperCase() + city.slice(1)}</option>) ) }
+                                    </select>
                                 </div>
 
-                                <div className="col-sm-3">
-                                    <input required type="text" className="form-control" name="cityTwo" placeholder="City Two" aria-label="City To"/>
+                                <div className="col-sm text-start">
+                                    <label htmlFor="cityTwo"><b>City Two:</b></label>
+                                    <select required className="form-control" name="cityTwo">
+                                        <option value="">select</option>
+                                       { cities.map((city, index)=>  (<option value={city} key={index}>{city.charAt(0).toUpperCase() + city.slice(1)}</option>) ) }
+                                    </select>
                                 </div>
 
-                                <div className="col-sm">
+                                <div className="col-sm text-start">
+                                    <label htmlFor="beds"><b>Beds:</b></label>
                                     <input required type="number" className="form-control" name="beds" placeholder="Total Beds" aria-label="Beds"/>
                                 </div>
 
-                                <div className="col-sm">
-                                    <input required type="number" className="form-control" name="baths" placeholder="Total Baths" aria-label="Baths"/>
+                                <div className="col-sm text-start">
+                                    <label htmlFor="baths"><b>Baths:</b></label>
+                                    <input required type="number" className="form-control" name="baths" placeholder="Total Baths" aria-label="Baths" step="0.5"/>
                                 </div>
 
-                                <div className="col-sm">
-                                    <input type="submit" className="btn btn-dark" value="Submit"/>
+                                <div className="col-sm mt-auto">
+                                    <input type="submit" className="btn btn-dark " value="Submit"/>
                                 </div>
                                 
                             </div>
@@ -99,11 +125,36 @@ function Landing()
                     </div>
                     <div className="col-md-2"></div>
                  </div>
+
+                <br />
+                 {/* <div className="row">
+                    <div className="col-md-1"></div>
+
+                    <div className="col-md-2">
+                        <label htmlFor="pets_friendly">Pets Friendly</label>
+                    </div>
+                    <div className="col-md-2">
+                        <label htmlFor="laundry_options">Laundry Options</label>
+                    </div>
+                    <div className="col-md-2">
+                        <label htmlFor="parking_options">Parking Options</label>
+                    </div>
+
+                    <div className="col-md-2">
+                        <label htmlFor="parking_options">Smoking Allowed</label>
+                    </div>
+
+                    <div className="col-md-2">
+                        <label htmlFor="parking_options">Funished</label>
+                    </div>
+                    
+                    <div className="col-md-1"></div>
+                 </div> */}
                 
                 <br />
                 <br />
                 <div id="results">
-                    { results }
+                    { results.charAt(0).toUpperCase() + results.slice(1) }
                     <br />
                     <b>{ cheaperCity }</b>
                     <br />
