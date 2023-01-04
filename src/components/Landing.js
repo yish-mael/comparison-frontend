@@ -48,7 +48,8 @@ function Landing()
         }
         
         try{
-            const response = await fetch('https://comparison-appx.herokuapp.com/search', {
+            // const response = await fetch('https://comparison-appx.herokuapp.com/search', {
+            const response = await fetch('http://localhost:5001/search', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
