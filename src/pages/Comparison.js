@@ -31,8 +31,8 @@ function Comparison() {
     {
         try{
             
-            // const cityResponse = await fetch('https://comparison-appx.herokuapp.com/cities');
-            const cityResponse = await fetch('http://localhost:5001/cities');
+             const cityResponse = await fetch('https://comparison-appx.herokuapp.com/cities');
+            //const cityResponse = await fetch('http://localhost:5001/cities');
             const cityData = await cityResponse.json();
             // console.log(cityData);
             setCities(cityData);
@@ -56,8 +56,8 @@ function Comparison() {
         }
         
         try{
-            // const response = await fetch('https://comparison-appx.herokuapp.com/search', { 
-            const response = await fetch('http://localhost:5001/search', {
+             const response = await fetch('https://comparison-appx.herokuapp.com/search', { 
+            //const response = await fetch('http://localhost:5001/search', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
