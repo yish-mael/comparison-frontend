@@ -17,13 +17,29 @@ function Login() {
     const { setAuth } = useAuth();
     const [submit, setSubmit] = useState("Sign In");
 
+    const [showPass, setShowPass] = useState(false);
+    const [passIcon, setPassIcon] = useState("bi bi-eye-slash");
+    const [passType, setPassType] = useState("password");
+
+    function handlePassView(){
+        if (showPass){
+            setShowPass(false);
+            setPassIcon("bi bi-eye-slash");
+            setPassType("password");
+        }else{
+            setShowPass(true);
+            setPassIcon("bi bi-eye");
+            setPassType("text")
+        }
+    }
+
     async function handleLogin(event){
         event.preventDefault();
         event.target.elements.submitBtn.disabled = true;
         setSubmit(<><span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...</>)
 
         const inputValues = {
-            email: event.target.elements.emailInput.value,
+            username: event.target.elements.userNameInput.value,
             password: event.target.elements.passwordInput.value
         }
 
@@ -56,8 +72,8 @@ function Login() {
         }catch(e){
             event.target.elements.submitBtn.disabled = false;
             setSubmit("Sign In");
-            if (e?.response?.data?.error.hasOwnProperty("email")){
-                setEmailError(e.response.data.error.email);
+            if (e?.response?.data?.error.hasOwnProperty("userName")){
+                setEmailError(e.response.data.error.userName);
                 setPasswordError("");
             }else if (e?.response?.data?.error.hasOwnProperty("password")){
                 setEmailError("");
@@ -88,12 +104,17 @@ function Login() {
                                 <p className="text-center text-dark fw-light">Welcome back!</p>
                                 
                                 <div className="pb-4">
-                                    <input type="email" name="emailInput" className="form-control placeholder-text border-0 border-bottom"  placeholder="Email Address" required />
+                                    <input type="text" name="userNameInput" className="form-control placeholder-text border-0 border-bottom"  placeholder="Email Address" required />
                                     <span className="text-danger small"><b>{emailError}</b></span>
                                 </div>
                                 <div className="pb-4">
-                                    <input type="password" name="passwordInput"  className="form-control placeholder-text border-0 border-bottom" placeholder="Password" required />
-                                    <span className="text-danger small"><b>{passwordError}</b></span>
+                                    <div class="input-group flex-nowrap">
+                                        <input type={passType} name="passwordInput"  className="form-control placeholder-text border-0 border-bottom" placeholder="Password" required />
+                                        <span class="input-group-text bg-white border-top-0 border-end-0" onClick={()=>{ handlePassView() }} id="addon-wrapping"><i className={passIcon}></i></span>
+                                        <span className="text-danger small"><b>{passwordError}</b></span>
+                                    </div>
+                                    {/* <input type="password" name="passwordInput"  className="form-control placeholder-text border-0 border-bottom" placeholder="Password" required /> */}
+                                    {/* <span className="text-danger small"><b>{passwordError}</b></span> */}
                                 </div>
 
                                 <div className="row">

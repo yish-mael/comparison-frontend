@@ -9,9 +9,26 @@ function Register() {
     const [firstNameError, setFirstNameError] = useState();
     const [lastNameError, setLastNameError] = useState();
     const [emailError, setEmailError] = useState();
+    const [userNameError, setUserNameError] = useState();
     const [passwordError, setPasswordError] = useState();
     const [error, setError] = useState();
     const [success, setSuccess] = useState();  
+
+    const [showPass, setShowPass] = useState(false);
+    const [passIcon, setPassIcon] = useState("bi bi-eye-slash");
+    const [passType, setPassType] = useState("password");
+
+    function handlePassView(){
+        if (showPass){
+            setShowPass(false);
+            setPassIcon("bi bi-eye-slash");
+            setPassType("password");
+        }else{
+            setShowPass(true);
+            setPassIcon("bi bi-eye");
+            setPassType("text")
+        }
+    }
     
 
     const { setAuth } = useContext(AuthContext);
@@ -26,7 +43,9 @@ function Register() {
         const inputValues = {
             firstName: event.target.elements.firstNameInput.value,
             lastName: event.target.elements.lastNameInput.value,
+            username: event.target.elements.userNameInput.value,
             email: event.target.elements.emailInput.value,
+            userType: event.target.elements.userType.value,
             password: event.target.elements.passwordInput.value,
             confirmPassword: event.target.elements.confirmPasswordInput.value
         }
@@ -46,9 +65,11 @@ function Register() {
             JSON.stringify({
                 firstName: inputValues.firstName,
                 lastName: inputValues.lastName,
+                username: inputValues.username,
                 email: inputValues.email,
                 password: inputValues.password,
                 stateId: inputValues.state,
+                userType: inputValues.userType,
                 status: "active"
             })
             , {
@@ -72,6 +93,8 @@ function Register() {
                 setFirstNameError(e.response.data.error.firstName);
             }else if (e.response.data.error.hasOwnProperty("lastName")){
                 setLastNameError(e.response.data.error.lastName);
+            }else if (e.response.data.error.hasOwnProperty("username")){
+                setUserNameError(e.response.data.error.username);
             }else if (e.response.data.error.hasOwnProperty("email")){
                 setEmailError(e.response.data.error.email);
             }else if (e.response.data.error.hasOwnProperty("password")){
@@ -129,35 +152,50 @@ function Register() {
 
                                 </div>
 
-
-                                <div className="pb-4">
-                                    <input type="email" name="emailInput" className="form-control placeholder-text border-0 border-bottom"  placeholder="Email" required />
-                                    <span className="text-danger small"><b>{emailError}</b></span>
-                                </div>
-
                                 
                                 <div className="row">
 
-                                    <div className="pb-4 col-md-6 ">
-                                        <input type="password" name="passwordInput" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}" placeholder="Password" title="min: 8 characters, max: 24 characters, special character, uppercase character and number."   className="form-control placeholder-text border-0 border-bottom" required />
-                                        <span className="text-danger small"><b>{passwordError}</b></span>
+                                    <div className="pb-4 col-md-6">
+                                        <input type="text" name="userNameInput" className="form-control placeholder-text border-0 border-bottom"  placeholder="Username" required />
+                                        <span className="text-danger small"><b>{userNameError}</b></span>
                                     </div>
 
                                     <div className="pb-4 col-md-6">
-                                        <input type="password" name="confirmPasswordInput" placeholder="Confirm Password" className="form-control placeholder-text border-0 border-bottom" required />
+                                        <input type="email" name="emailInput" className="form-control placeholder-text border-0 border-bottom"  placeholder="Email" required />
+                                        <span className="text-danger small"><b>{emailError}</b></span>
+                                    </div>
+
+                                </div>
+
+
+                                <div className="row">
+
+                                    <div className="pb-4 col-md-6 ">
+                                        <div class="input-group flex-nowrap">
+                                            <input type={passType} name="passwordInput" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}" className="form-control placeholder-text border-0 border-bottom" placeholder="Password" required />
+                                            <span class="input-group-text bg-white border-top-0 border-end-0" onClick={()=>{ handlePassView() }} id="addon-wrapping"><i className={passIcon}></i></span>
+                                            <span className="text-danger small"><b>{passwordError}</b></span>
+                                        </div>
+
+                                        {/* <input type="password" name="passwordInput" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}" placeholder="Password" title="min: 8 characters, max: 24 characters, special character, uppercase character and number."   className="form-control placeholder-text border-0 border-bottom" required />
+                                        <span className="text-danger small"><b>{passwordError}</b></span> */}
+                                    </div>
+
+                                    <div className="pb-4 col-md-6">
+                                        <input type={passType} name="confirmPasswordInput" placeholder="Confirm Password" className="form-control placeholder-text border-0 border-bottom" required />
                                     </div>
 
                                 </div>
 
                                 <div className="pb-4">
                                     <label htmlFor="">How would you describe yourself? </label>
-                                    <select className="form-select" name="selfDescription" required >
-                                        <option value="">I'm an apartment renter.</option>
-                                        <option value="">I'm a landlord.</option>
-                                        <option value="">I'm an apartment community manager.</option>
-                                        <option value="">Just looking through.</option>
+                                    <select className="form-select" name="userType" required >
+                                        <option value="renter">I'm an apartment renter.</option>
+                                        <option value="landlord">I'm a landlord.</option>
+                                        <option value="apartment-community">I'm an apartment community manager.</option>
+                                        <option value="regular">Just looking through.</option>
                                     </select>
-                                    <span className="text-danger small"><b>{emailError}</b></span>
+                                    {/* <span className="text-danger small"><b>{emailError}</b></span> */}
                                 </div>
                                 
                                 <div className="mb-4">

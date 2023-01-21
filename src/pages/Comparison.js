@@ -31,7 +31,7 @@ function Comparison() {
     {
         try{
             
-             const cityResponse = await fetch('https://comparison-appx.herokuapp.com/cities');
+             const cityResponse = await fetch('https://smartrentics.com/api/cities');
             //const cityResponse = await fetch('http://localhost:5001/cities');
             const cityData = await cityResponse.json();
             // console.log(cityData);
@@ -56,7 +56,7 @@ function Comparison() {
         }
         
         try{
-             const response = await fetch('https://comparison-appx.herokuapp.com/search', { 
+             const response = await fetch('https://smartrentics.com/api/search', { 
             //const response = await fetch('http://localhost:5001/search', {
                 method: 'POST',
                 headers: {
@@ -80,7 +80,7 @@ function Comparison() {
             setGeo2(geoData2.features[0].center);
             
             const data = await response.json();
-            // console.log(data);
+            console.log(data);
             setResults(""); 
             setAverageYearlySavings("");
             setCheaperCity("");
@@ -93,37 +93,36 @@ function Comparison() {
             setSafetyTitle(""); 
             event.target.elements.submitBtn.disabled = false;
             setSubmit("Submit");
-            if(data.message){
-                let msg = data.message;
-                if(msg === "city does not exsist" || data.citySavings.AverageMonthlySavings === null) {
+            
+            if(data?.message || JSON.stringify(data) === '{}'){
+                //console.log("here now")
+                let msg = data?.message;
+                if(msg === "city does not exsist") {
                     msg = "Sorry, we are yet to have the data.";
+                    setResults(msg); 
+                }else{
+                    setResults("Sorry, we are yet to have the data."); 
                 }
-                setResults(msg); 
                 
             }else{
-                if(data.citySavings.AverageMonthlySavings === null) {
-                    setResults("Sorry, we are yet to have the data.");
-                }else{
-
-                    if(data.citySavings.CheaperCity.split(" ")[1] == "One"){
-                        setCheaperCity(data.citySavings.CityOne);
-                    }
-                    
-                    if(data.citySavings.CheaperCity.split(" ")[1] == "Two"){
-                        setCheaperCity(data.citySavings.CityTwo);
-                        
-                    }
-                    
-                    setResults(""); 
-                    setSavingTitle("Cost Savings"); 
-                    setSafetyTitle("Safety Grade"); 
-                    setAverageYearlySavings("$"+Math.ceil(data.citySavings.YearlySavings));
-                    setAverageMonthlySavings("$"+Math.ceil(data.citySavings.MonthlySavings));
-                    setCityOne(data.citySavings.CityOne);
-                    setCityTwo(data.citySavings.CityTwo);
-                    setCityOneGrade(data.cityOneSafety.crime_grade);
-                    setCityTwoGrade(data.cityTwoSafety.crime_grade);
+               
+                if(data?.citySavings?.CheaperCity.split(" ")[1] == "One"){
+                    setCheaperCity(data?.citySavings?.CityOne);
                 }
+                
+                if(data?.citySavings?.CheaperCity.split(" ")[1] == "Two"){
+                    setCheaperCity(data?.citySavings?.CityTwo);
+                }
+                
+                setResults(""); 
+                setSavingTitle("Cost Savings"); 
+                setSafetyTitle("Safety Grade"); 
+                setAverageYearlySavings("$"+Math.ceil(data?.citySavings?.YearlySavings));
+                setAverageMonthlySavings("$"+Math.ceil(data?.citySavings?.MonthlySavings));
+                setCityOne(data?.citySavings?.CityOne);
+                setCityTwo(data?.citySavings?.CityTwo);
+                setCityOneGrade(data?.cityOneSafety?.crime_grade);
+                setCityTwoGrade(data?.cityTwoSafety?.crime_grade);
             }
             
         }catch(err){
@@ -190,11 +189,8 @@ function Comparison() {
       <Header />
 
         <div className="container-fluid m-0">
-            
             <div className="container-fluid m-0">
-                
                 <div className="row">
-
                     <div className="col-md-2 m-0">
                         <br /><br /><br />
                         
@@ -302,7 +298,7 @@ function Comparison() {
                                         </div>
                                     </>
                                 )
-                                :(<></>)     
+                                :(<>{results}</>)     
                             }
                             
                         </>
@@ -350,7 +346,7 @@ function Comparison() {
                                     </div>
                                     </>
                                 )
-                                :(<></>)
+                                :(<>{results}</>)
                             }
                         </>
                     )

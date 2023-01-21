@@ -23,32 +23,43 @@ function About() {
               <div className="col-md-5 my-auto">
                 <h4 className='fw-normal'>Who we are</h4>
                 <p>
-                  Smart rentics, Inc. helps you save time, money and hassle when looking to rent and apartment.
-                  <br />
-                  Smart rentics, Inc. is the smart way to rent an apartment. Post-COVID, with the flexibility of working from anywhere, ever increasing apartment rental prices,
-                  and inflation. Our tool helps Apartments renters make informed decisions by comparing current rental prices across different cities and guarantiees a 95% accuracy in price savings between the two locations, if there is one.
-                </p>
-
-                <h4 className='fw-normal'>Safety Comparison Tool</h4>
-                <p >
-                  Our Machine Learning driven tool processes crime data got from law enforcement agencies and grades the data on 
-                  safety rationg scale. This helps users know how relatively safe their preferred cities are.     
-                </p>
-
-                <h4 className='fw-normal'>Price comparison tool</h4>
-                <p>
-                  Our data driven tool gets from various apartment listing agencies and computes as a comparison a price saving if you prefer to live in  city compared to another. The accuracy in our results is 95 percent.
-                </p>
-                
-                <h4 className='fw-normal'>Rewiews</h4>
-                <p>
-                  Apartment renters and frist hand, accurate and reliable information about various apartment communities. This invaluabble information would help you get living insights about apartment communities you can them navigate to these communities through our third party affiliates.
+                Smart rentics, Inc. helps you save time, money, and hassle when looking to rent an apartment.
+                Post-COVID, with the flexibility of working from anywhere, the ever-increasing apartment rental prices,
+                and inflation. Smart rentics, Inc. is the smart way to rent an apartment. <br />
+                Our tool helps Apartment renters make informed decisions by comparing current rental prices across
+                different cities and guarantees a 95% accuracy in price savings between the two locations if there is one.      
                 </p>
               </div>
               <div className="col-md-5 px-5">
                 <img src="assets/img/pexels-6758788.jpg" style={{borderRadius: 20}} className="img-fluid"  alt="" />
               </div>
               <div className="col"></div>
+            </div>
+            <br />
+            <div className="row py-5">
+              <div className="col-md-4 p-4">
+                <h4 className='fw-normal'>Safety Comparison Tool</h4>
+                  <p >
+                  Our Machine-Learning driven tool processes crime data obtained from law enforcement agencies and
+                  grades the data on a safety rating scale. This rating helps users know how relatively safe their preferred
+                  cities are.
+                  </p>
+              </div>
+              <div className="col-md-4 p-4">
+                <h4 className='fw-normal'>Price Comparison Tool</h4>
+                  <p>
+                  Our data-driven tool gets data from various apartment listing agencies. It computes as a comparison a price
+                  saving if you prefer to live in one city compared to another. The accuracy of our results is 95 percent.
+                  </p>
+              </div>
+              <div className="col-md-4 p-4">
+                <h4 className='fw-normal'>Rewiews</h4>
+                  <p>
+                  Apartment renters want accurate, reliable information about various apartment communities. You can
+                  then navigate to these communities through our third-party affiliates. This invaluable information would
+                  help you get living insights about apartment communities.
+                  </p>
+              </div>
             </div>
           </div>
         </section>

@@ -1,7 +1,8 @@
 // import 'dotenv/config';
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_BACKEND_API || 'http://localhost:5001';
+ const BASE_URL = process.env.REACT_APP_BACKEND_API || 'https://smartrentics.com/api/';
+// const BASE_URL = process.env.REACT_APP_BACKEND_API || 'http://localhost:5001';
 
 // console.log(process.env.REACT_APP_BACKEND_API);
 
@@ -14,4 +15,3 @@ export const axiosPrivate = axios.create({
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true
 });
-

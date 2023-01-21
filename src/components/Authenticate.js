@@ -16,7 +16,7 @@ const Authenticate = () => {
                 await refresh();
             }
             catch (err) {
-                console.error(err);
+                //console.error(err);
                 //console.log();
             }
             finally {

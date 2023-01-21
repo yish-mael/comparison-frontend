@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../apis/axios";
 import AuthContext from "../../context/AuthProvider";
@@ -8,11 +8,25 @@ function ReviewForm(props) {
 
     const [error, setError] = useState();
     const [success, setSuccess] = useState();  
-    
+    let [cities, setCities] = useState([]);
 
     const { setAuth } = useContext(AuthContext);
 
     const [submit, setSubmit] = useState("Submit");
+
+    async function getCities()
+    {
+        try{
+            
+            const cityResponse = await fetch('https://smartrentics.com/api/cities');
+            //const cityResponse = await fetch('http://localhost:5001/cities');
+            const cityData = await cityResponse.json();
+            // console.log(cityData);
+            setCities(cityData);
+        }catch(err){
+            console.log(err);
+        }
+    }
 
     async function handleReviews(event){
         event.preventDefault();
@@ -62,6 +76,10 @@ function ReviewForm(props) {
         }
     }
 
+    useEffect(() => {
+        getCities();
+    }, []);
+
 
     return (
         <>
@@ -83,10 +101,19 @@ function ReviewForm(props) {
 
                                 <div className="row">
                                     <div className="pb-4 col-md-12 ">
-                                        <input type="hidden" name="city" defaultValue={props.cityName}/>
+                                        <input type="hidden" defaultValue={props.cityName}/>
                                         <input type="hidden" name="userId" defaultValue={props.userId}/>
-
                                         <input type="text" name="apartmentInput" placeholder="Apartment Complex Name." className="form-control placeholder-text border-0 border-bottom" required />
+                                    </div>
+                                </div>
+                                
+                                <div className="row">
+                                    <div className="pb-4 col-md-12 ">
+                                        <select required className="form-control placeholder-text border-0 border-bottom"  name="city">
+                                            <option value="">Select City</option>
+                                            { cities.map((city, index)=>  (<option value={city} key={index}>{city.charAt(0).toUpperCase() + city.slice(1)}</option>) ) }
+                                        </select>
+                                        
                                     </div>
                                 </div>
 

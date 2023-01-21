@@ -41,7 +41,7 @@ function Header() {
                 <img src="assets/img/srlogo.png" alt="" />
                 {/* <h3 className='text-dark'>Smart Rentics<span className='text-danger'>.</span></h3> */}
             </Link>
-
+          
             <nav id="navbar" className="navbar ">
                 <ul>
                   {/* <li><a href="#hero">Home</a></li>
@@ -59,8 +59,8 @@ function Header() {
                               My Account
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <li><a className="dropdown-item" href="#">Profile</a></li>
-                              <li><hr className="dropdown-divider"/></li>
+                              {/* <li><a className="dropdown-item" href="#">Profile</a></li> */}
+                              {/* <li><hr className="dropdown-divider"/></li> */}
                               <li><Link className="dropdown-item"  onClick={logout} >Logout</Link></li>
                             </ul>
                           </li>)
@@ -80,8 +80,9 @@ function Header() {
 
             </nav>
 
-            <i className="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-            <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+            
+            {/* <i className=" bi bi-list"></i>
+            <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i> */}
 
             </div>
         </header>

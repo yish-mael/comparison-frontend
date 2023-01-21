@@ -8,6 +8,7 @@ import Comparison from './pages/Comparison';
 import Listing from './pages/Listing';
 import Profile from './pages/Profile';
 import Reviews from './pages/Reviews';
+import Terms from './pages/Terms';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path='/listing' element={<Listing />}  />
             <Route path='/comparison' element={<Comparison />}  />
             <Route path='/reviews' element={<Reviews />}  />
+            <Route path='/terms' element={<Terms />}  />
           </Route>
         </Route>
       </Routes>

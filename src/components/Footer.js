@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
     <>
-        <footer id="footer" className="footer">
+        <footer id="footer" className="footer pb-0">
 
             <div className="container">
             <div className="row gy-3">
@@ -16,12 +17,12 @@ function Footer() {
 
                 </div>
 
-                <div className="col-lg-3 col-md-6 footer-links d-flex">
+                <div className="col-lg-3 col-md-6 p-0 d-flex">
                 <i className="bi bi-envelope icon"></i>
                 <div>
                     <h4>Reservations</h4>
                     <p>
-                    <strong>Email:</strong> info@smartrentics.com<br/>
+                    <strong>Email:</strong> <a href="mailto:info@smartrentics.com">info@smartrentics.com</a><br/>
                     </p>
                 </div>
                 </div>
@@ -49,9 +50,12 @@ function Footer() {
             </div>
             </div>
 
-            <div className="container">
-                <div className="copyright">
-                    &copy; Copyright <strong><span>Smart Rentics</span></strong>. All Rights Reserved
+            <div className=" copyright py-2 container d-flex justify-content-between">
+                <div className="">
+                    &copy; Copyright <strong><span>Smart Rentics, Inc.</span></strong> All Rights Reserved
+                </div>
+                <div className=" ">
+                    <Link to={"/terms"}>Terms & Conditions</Link> | <Link>Privacy Policy</Link>
                 </div>
             </div>
 
