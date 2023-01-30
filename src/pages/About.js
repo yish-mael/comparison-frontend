@@ -25,7 +25,7 @@ function About() {
                 <p>
                 Smart rentics, Inc. helps you save time, money, and hassle when looking to rent an apartment.
                 Post-COVID, with the flexibility of working from anywhere, the ever-increasing apartment rental prices,
-                and inflation. Smart rentics, Inc. is the smart way to rent an apartment. <br />
+                and inflation, Smart rentics, Inc. is the smart way to rent an apartment. <br />
                 Our tool helps Apartment renters make informed decisions by comparing current rental prices across
                 different cities and guarantees a 95% accuracy in price savings between the two locations if there is one.      
                 </p>
@@ -53,7 +53,7 @@ function About() {
                   </p>
               </div>
               <div className="col-md-4 p-4">
-                <h4 className='fw-normal'>Rewiews</h4>
+                <h4 className='fw-normal'>Reviews</h4>
                   <p>
                   Apartment renters want accurate, reliable information about various apartment communities. You can
                   then navigate to these communities through our third-party affiliates. This invaluable information would

@@ -118,7 +118,7 @@ function Register() {
                             <div className="logo mt-2" align="center">
                                 <a href="/"><img src={`${window.location.origin}/assets/img/srlogo.png`} width="100" alt="" /></a>
                             </div>
-                            <form onSubmit={handleRegistration}  className="py-5 px-3 pt-0">
+                            <form onSubmit={handleRegistration}  className="py-5 px-3 pt-0" autoComplete="false">
 
                                 <p className="pt-4 text-dark h4 text-center fw-bold">Create an account</p>
                                 <p className="text-center text-dark fw-light">Let's get started</p>
@@ -172,7 +172,15 @@ function Register() {
 
                                     <div className="pb-4 col-md-6 ">
                                         <div class="input-group flex-nowrap">
-                                            <input type={passType} name="passwordInput" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}" className="form-control placeholder-text border-0 border-bottom" placeholder="Password" required />
+                                            <input 
+                                            type={passType} 
+                                            name="passwordInput" 
+                                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}" 
+                                            className="form-control placeholder-text border-0 border-bottom" 
+                                            placeholder="Password" 
+                                            required
+                                            title="Minimum of 8 characters, upper and lowercase characters, numbers, and special symbols."
+                                            />
                                             <span class="input-group-text bg-white border-top-0 border-end-0" onClick={()=>{ handlePassView() }} id="addon-wrapping"><i className={passIcon}></i></span>
                                             <span className="text-danger small"><b>{passwordError}</b></span>
                                         </div>

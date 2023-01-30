@@ -55,7 +55,7 @@ function Footer() {
                     &copy; Copyright <strong><span>Smart Rentics, Inc.</span></strong> All Rights Reserved
                 </div>
                 <div className=" ">
-                    <Link to={"/terms"}>Terms & Conditions</Link> | <Link>Privacy Policy</Link>
+                    <Link to={"/terms"}>Terms & Conditions</Link> | <Link to={"/privacy"}>Privacy Policy</Link> | <Link to={"/disclaimer"}>Disclaimer</Link> | <Link to={"/cookie"}>Cookie Policy</Link>
                 </div>
             </div>
 

@@ -9,6 +9,9 @@ import Listing from './pages/Listing';
 import Profile from './pages/Profile';
 import Reviews from './pages/Reviews';
 import Terms from './pages/Terms';
+import Privacy from './pages/PrivacyPolicy';
+import Disclaimer from './pages/Disclaimer';
+import Cookie from './pages/Cookie';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
             <Route path='/comparison' element={<Comparison />}  />
             <Route path='/reviews' element={<Reviews />}  />
             <Route path='/terms' element={<Terms />}  />
+            <Route path='/privacy' element={<Privacy />}  />
+            <Route path='/disclaimer' element={<Disclaimer />}  />
+            <Route path='/cookie' element={<Cookie />}  />
           </Route>
         </Route>
       </Routes>
