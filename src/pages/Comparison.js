@@ -265,9 +265,9 @@ function Comparison() {
                                             <br />
                                             <small><b>Cheaper City:</b> { cheaperCity }</small>
                                             <br />
-                                            <small><b>Monthly Savings: </b>{ averageMonthlySavings }</small>
+                                            <small><b>Average Monthly Savings: </b>{ averageMonthlySavings }</small>
                                             <br />
-                                            <small><b>Yearly Savings: </b>{ averageYearlySavings }</small>
+                                            <small><b>Average Yearly Savings: </b>{ averageMonthlySavings*12 }</small>
                                             <br />
                                             {/* <small>Explore available Apartments</small> 
                                             <br /> */}
@@ -315,9 +315,9 @@ function Comparison() {
                                         <br />
                                         <small><b>Cheaper City:</b> ******</small>
                                         <br />
-                                        <small><b>Monthly Savings: </b> ******</small>
+                                        <small><b>Average Monthly Savings: </b> ******</small>
                                         <br />
-                                        <small><b>Yearly Savings: </b> ******</small>
+                                        <small><b>Average Yearly Savings: </b> ******</small>
                                         <br />
                                         <small><a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#loginx" className="dropdown-item text-danger">Sign In to see the price savings.</a></small>
                                     </div>

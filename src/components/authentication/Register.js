@@ -53,8 +53,11 @@ function Register() {
         //console.log(inputValues);
         // Input Validation 
         if(inputValues.password !== inputValues.confirmPassword) {
-        //console.log("hello");
+        console.log("hello");
         event.target.elements.confirmPasswordInput.setCustomValidity("Passwords don't match");
+        event.target.elements.submitBtn.disabled = false;
+            setSubmit("Sign Up");
+            return false;
         } else {
         event.target.elements.confirmPasswordInput.setCustomValidity('');
         }
@@ -161,7 +164,7 @@ function Register() {
                                     </div>
 
                                     <div className="pb-4 col-md-6">
-                                        <input type="email" name="emailInput" className="form-control placeholder-text border-0 border-bottom"  placeholder="Email" required />
+                                        <input type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="abc@xyz.com" name="emailInput" className="form-control placeholder-text border-0 border-bottom"  placeholder="Email" required />
                                         <span className="text-danger small"><b>{emailError}</b></span>
                                     </div>
 
