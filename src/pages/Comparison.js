@@ -117,7 +117,7 @@ function Comparison() {
                 setResults(""); 
                 setSavingTitle("Cost Savings"); 
                 setSafetyTitle("Safety Grade"); 
-                setAverageYearlySavings("$"+Math.ceil(data?.citySavings?.YearlySavings));
+                setAverageYearlySavings("$"+(Math.ceil(data?.citySavings?.MonthlySavings)*12));
                 setAverageMonthlySavings("$"+Math.ceil(data?.citySavings?.MonthlySavings));
                 setCityOne(data?.citySavings?.CityOne);
                 setCityTwo(data?.citySavings?.CityTwo);
@@ -267,7 +267,7 @@ function Comparison() {
                                             <br />
                                             <small><b>Average Monthly Savings: </b>{ averageMonthlySavings }</small>
                                             <br />
-                                            <small><b>Average Yearly Savings: </b>{ averageMonthlySavings*12 }</small>
+                                            <small><b>Average Yearly Savings: </b>{ averageYearlySavings }</small>
                                             <br />
                                             {/* <small>Explore available Apartments</small> 
                                             <br /> */}
