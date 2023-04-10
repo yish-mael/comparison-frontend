@@ -22,13 +22,13 @@ function Banner() {
 
                             <Carousel showArrows={false} autoPlay={true} infiniteLoop={true} showThumbs={false} stopOnHover={true} showStatus={false}>
                                 <div>
-                                    <img src="assets/img/pexels-6444981.jpg" style={{borderRadius: 20}} className="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300"/>
+                                    <img src="assets/img/pexels-6444981.jpg" style={{borderRadius: 20, border: 'solid thick white'}} className="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300"/>
                                 </div>
                                 <div>
-                                    <img src="assets/img/pexels-4138152.jpg" style={{borderRadius: 20}} className="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300"/>
+                                    <img src="assets/img/pexels-4138152.jpg" style={{borderRadius: 20, border: 'solid thick white'}} className="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300"/>
                                 </div>
                                 <div>
-                                    <img src="assets/img/pexels-6489104.jpg" style={{borderRadius: 20}} className="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300"/>
+                                    <img src="assets/img/pexels-6489104.jpg" style={{borderRadius: 20, border: 'solid thick white'}} className="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300"/>
                                 </div>
                             </Carousel>
                         

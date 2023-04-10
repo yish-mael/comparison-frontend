@@ -44,10 +44,12 @@ function Header() {
           
             <nav id="navbar" className="navbar ">
                 <ul>
-                  {/* <li><a href="#hero">Home</a></li>
+                  <li><a href="/" className={(window.location.pathname  == "/")? 'active fw-normal text-danger' :'fw-normal'}>Home</a></li>
+                  {/* 
                   <li><a href="#menu">Comparison</a></li> */}
                   {/* <li><a href="#events" className='fw-normal'>Listings</a></li> */}
-                  <li><Link to="/about" className='fw-normal'>About Us</Link></li>
+                  <li><Link to="/about" className={(window.location.pathname  == "/about")? 'active fw-normal text-danger' :'fw-normal'}>About Us</Link></li>
+                  <li><a href="https://smartrentics.com/cities/" className='fw-normal'>Cities</a></li>
                   {/* <li><Link to="/reviews" className='fw-normal'>Reviews</Link></li> */}
                   {/* <li><a href="#contact">Contact</a></li> */}
                   
@@ -66,7 +68,7 @@ function Header() {
                           </li>)
                       : (<li className="dropdown">
                           <a className="nav-link dropdown-toggle fw-normal" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Sign In / Sign Up
+                          My Account
                           </a>
                           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#signup" className="dropdown-item">Create Account</a></li>

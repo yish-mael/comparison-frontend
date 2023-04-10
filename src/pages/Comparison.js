@@ -251,105 +251,57 @@ function Comparison() {
             <div className="cityResult">
                 <h5 className="text-blue text-center">Results</h5>
                 {
-                    auth?.userId
+
+                    (safetyTitle !== "")
                     ?(
                         <>
-                            {
-                                (safetyTitle !== "")
-                                ?(
-                                    <>
-                                        <div id="savings">
-                                            { results.charAt(0).toUpperCase() + results.slice(1) }
-                                        
-                                            <b className="text-red">{ savingTitle }</b>
-                                            <br />
-                                            <small><b>Cheaper City:</b> { cheaperCity }</small>
-                                            <br />
-                                            <small><b>Average Monthly Savings: </b>{ averageMonthlySavings }</small>
-                                            <br />
-                                            <small><b>Average Yearly Savings: </b>{ averageYearlySavings }</small>
-                                            <br />
-                                            {/* <small>Explore available Apartments</small> 
-                                            <br /> */}
-                                            <small> <a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#review" className="dropdown-item text-danger">Review your current apartment complex.</a></small>
-                                        </div>
-                                        <br />
-                                        <div id="safety" className="">
-                                            <b className="text-red">{ safetyTitle }</b>
-                                            <br />
-                                            <div className="d-flex">
-                                                <div>
-                                                    <small>{ cityOne.charAt(0).toUpperCase() + cityOne.slice(1) }</small>  
-                                                </div>
-                                                <div>
-                                                    <b className="px-2">{ cityOneGrade }</b>
-                                                </div>
-                                            </div>
-                        
-                                            <div className="d-flex">
-                                                <div>
-                                                    <small>{ cityTwo.charAt(0).toUpperCase() + cityTwo.slice(1) }</small> 
-                                                </div>
-                                                <div>
-                                                    <b className="px-2">{ cityTwoGrade }</b>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                    </>
-                                )
-                                :(<>{results}</>)     
-                            }
+                            <div id="savings">
+                                { results.charAt(0).toUpperCase() + results.slice(1) }
                             
+                                <b className="text-red">{ savingTitle }</b>
+                                <br />
+                                <small><b>Cheaper City:</b> { cheaperCity }</small>
+                                <br />
+                                <small><b>Average Monthly Savings: </b>{ averageMonthlySavings }</small>
+                                <br />
+                                <small><b>Average Yearly Savings: </b>{ averageYearlySavings }</small>
+                                <br />
+                                
+                                    
+                                { auth?.userId
+                                    ?(<> <small> <a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#review" className="dropdown-item text-danger">Review your current apartment complex.</a></small></>)
+                                    :(<>  <small><a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#loginx" className="dropdown-item text-danger">Sign In to drop a review.</a></small></>)
+                                }
+                                <small>Read more about <a href={"https://smartrentics.com/cities/category/"+cityOne}>{ cityOne.charAt(0).toUpperCase() + cityOne.slice(1) }</a> and <a href={"https://smartrentics.com/cities/category/"+cityTwo}>{ cityTwo.charAt(0).toUpperCase() + cityTwo.slice(1) }</a>.</small>
+                                <br /> 
+                                                                                
+                            </div>
+                            <br />
+                            <div id="safety" className="">
+                                <b className="text-red">{ safetyTitle }</b>
+                                <br />
+                                <div className="d-flex">
+                                    <div>
+                                        <small>{ cityOne.charAt(0).toUpperCase() + cityOne.slice(1) }</small>  
+                                    </div>
+                                    <div>
+                                        <b className="px-2">{ cityOneGrade }</b>
+                                    </div>
+                                </div>
+            
+                                <div className="d-flex">
+                                    <div>
+                                        <small>{ cityTwo.charAt(0).toUpperCase() + cityTwo.slice(1) }</small> 
+                                    </div>
+                                    <div>
+                                        <b className="px-2">{ cityTwoGrade }</b>
+                                    </div>
+                                </div>
+                                
+                            </div>
                         </>
                     )
-                    :(
-                        <>
-                            { 
-                                (safetyTitle !== "")
-                                ?(<>
-                                    <div id="savings">
-                                        { results.charAt(0).toUpperCase() + results.slice(1) }
-                                        
-                                        <b className="text-red">{ savingTitle }</b>
-                                        <br />
-                                        <small><b>Cheaper City:</b> ******</small>
-                                        <br />
-                                        <small><b>Average Monthly Savings: </b> ******</small>
-                                        <br />
-                                        <small><b>Average Yearly Savings: </b> ******</small>
-                                        <br />
-                                        <small><a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#loginx" className="dropdown-item text-danger">Sign In to see the price savings.</a></small>
-                                    </div>
-                                    <br />
-                                    <div id="safety" className="">
-                                        <b className="text-red">{ safetyTitle }</b>
-                                        <br />
-                                        <div className="d-flex">
-                                            <div>
-                                                <small>{ cityOne.charAt(0).toUpperCase() + cityOne.slice(1) }</small>  
-                                            </div>
-                                            <div>
-                                                <b className="px-2">{ cityOneGrade }</b>
-                                            </div>
-                                        </div>
-                    
-                                        <div className="d-flex">
-                                            <div>
-                                                <small>{ cityTwo.charAt(0).toUpperCase() + cityTwo.slice(1) }</small> 
-                                            </div>
-                                            <div>
-                                                <b className="px-2">{ cityTwoGrade }</b>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    </>
-                                )
-                                :(<>{results}</>)
-                            }
-                        </>
-                    )
+                    :(<>{results}</>)     
                 }
                 
             </div>
