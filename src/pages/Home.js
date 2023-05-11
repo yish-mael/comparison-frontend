@@ -70,6 +70,24 @@ function Home() {
 
           </div>
         </section>
+
+        <section className='' style={{paddingLeft: 200, paddingRight: 200, paddingTop: 0}} >
+          <div className='cta-image' style={{ borderRadius: 20 }} >
+          <div className='cta-image-o' style={{ paddingLeft: 150, paddingRight: 150, padding: 60, borderRadius: 20 }} >
+            <h3 className='text-white fw-light'>Do you want to save on rent by comparing locations and increasing your credit score?</h3>
+            <div className='row'>
+              <div className="col-md-6"></div>
+              <div className="col-md-6 text-right px-5" align="right">
+                <Link to="/comparison" className='btn btn-light px-3 mx-2 rounded-pill'>Save Money</Link>
+                <a href='https://affiliates.creditrentboost.com/?affi=00202' className='btn btn-danger px-3 mx-2 rounded-pill'>Boost Credit</a>
+              </div>
+
+            </div>
+
+          </div>
+          </div>
+
+        </section>
         
         <section id="cheap" className="section-bg">
           <div className="container" data-aos="fade-up">

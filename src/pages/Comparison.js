@@ -268,11 +268,9 @@ function Comparison() {
                                 <br />
                                 
                                     
-                                { auth?.userId
-                                    ?(<> <small> <a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#review" className="dropdown-item text-danger">Review your current apartment complex.</a></small></>)
-                                    :(<>  <small><a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#loginx" className="dropdown-item text-danger">Sign In to drop a review.</a></small></>)
-                                }
-                                <small>Read more about <a href={"https://smartrentics.com/cities/category/"+cityOne}>{ cityOne.charAt(0).toUpperCase() + cityOne.slice(1) }</a> and <a href={"https://smartrentics.com/cities/category/"+cityTwo}>{ cityTwo.charAt(0).toUpperCase() + cityTwo.slice(1) }</a>.</small>
+                                
+                                <br />
+                                <small>To boost your credit score by renting <a className='text-danger' href="https://affiliates.creditrentboost.com/?affi=00202">click here</a>.</small>
                                 <br /> 
                                                                                 
                             </div>
@@ -299,6 +297,14 @@ function Comparison() {
                                 </div>
                                 
                             </div>
+                            <br />
+                            { auth?.userId
+                                ?(<> <small> <a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#review" className="dropdown-item text-danger">Review your current apartment complex.</a></small></>)
+                                :(<>  <small><a data-bs-toggle="modal" onMouseOver={(e)=>{e.target.style.cursor='pointer'}} data-bs-target="#loginx" className="text-danger">Sign In</a> to drop a review.</small></>)
+                            }
+                            <br />
+                            <small>Read about <a href={"https://smartrentics.com/cities/category/"+cityOne}>{ cityOne.charAt(0).toUpperCase() + cityOne.slice(1) }</a> and <a href={"https://smartrentics.com/cities/category/"+cityTwo}>{ cityTwo.charAt(0).toUpperCase() + cityTwo.slice(1) }</a>.</small>
+                            <br />
                         </>
                     )
                     :(<>{results}</>)     

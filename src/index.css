@@ -73,3 +73,12 @@ body {
     opacity: 1;
   }
 }
+
+.cta-image {
+  background-image: url('../public/assets/img/pexels-6238683.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.cta-image-o {
+  background: linear-gradient(to right, #012f6c, transparent);
+}
